@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GiphyAPI</title>
+    
+</head>
+<body>
+    
+
+
+    <!-- jQuery -->
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+    </script>
+    
+    <!-- my app -->
+    <script>
+
+        var topics = ['Money', 'Guns', 'Coding', 'Watches']
+
+
+    //  q: string
+    // Search query term or phrase.
+
+    // limit: integer (int32)
+    // The maximum number of records to return.
+
+    // rating: string
+    // Filters results by specified rating.
+
+        var xhr = $.get("http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=GyRePZcZLe1JzhAbTxGilTmHQ9M08VLt&limit=5");
+        xhr.done(function(data) { console.log("success got data", data); });
+    
+    
+    </script>
+
+</body>
+</html>
