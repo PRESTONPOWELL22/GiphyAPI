@@ -5,11 +5,15 @@
     <meta name="viewport" content="width=, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>GiphyAPI</title>
+    <!-- bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     
 </head>
 <body>
-    
-
+    <form action="">
+    <input id='search' type="text">
+    <button class='btn btn-primary pure-btn' id='submit'>submit</button>
+    </form>
 
     <!-- jQuery -->
     <script
@@ -19,24 +23,36 @@
     </script>
     
     <!-- my app -->
-    <script>
+<script>
 
-        var topics = ['Money', 'Guns', 'Coding', 'Watches']
+// var topics = []
+// var input = $("#search").val()
+
+$('.pure-btn').click(function(e) { 
+    e.preventDefault()
+    console.log("click noticed")
 
 
-    //  q: string
-    // Search query term or phrase.
+    $.ajax({
 
-    // limit: integer (int32)
-    // The maximum number of records to return.
+        url: "http://api.giphy.com/v1/gifs/search?q=" + $('#search').val() +  "&api_key=dc6zaTOxFJmzC&limit=5",
+        // url: "http://api.giphy.com/v1/gifs/search?q=" + $('#search').val() +  "api_key=GyRePZcZLe1JzhAbTxGilTmHQ9M08VLt",
+        type: "GET",
+        success: function(resp) {
+            console.log(resp)
+            // debugger
+            var pic = resp.data[0].images.original.url 
+            $('body').append('<image class="image1" ></image>')
+            $('.image1').attr('src', pic)
 
-    // rating: string
-    // Filters results by specified rating.
 
-        var xhr = $.get("http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=GyRePZcZLe1JzhAbTxGilTmHQ9M08VLt&limit=5");
-        xhr.done(function(data) { console.log("success got data", data); });
-    
-    
+        }
+
+    });
+   
+})
+
+
     </script>
 
 </body>
