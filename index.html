@@ -15,6 +15,8 @@
     <button class='btn btn-primary pure-btn' id='submit'>submit</button>
     </form>
 
+    <div class="btnDiv"></div>
+
     <!-- jQuery -->
     <script
         src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -31,6 +33,7 @@
 $('.pure-btn').click(function(e) { 
     e.preventDefault()
     console.log("click noticed")
+    $(".btnDiv").empty()
 
 
     $.ajax({
@@ -41,12 +44,26 @@ $('.pure-btn').click(function(e) {
         success: function(resp) {
             console.log(resp)
             // debugger
-            var pic = resp.data[0].images.original.url 
-            $('body').append('<image class="image1" ></image>')
-            $('.image1').attr('src', pic)
+                       
+                var pic1 = resp.data[0].images.fixed_height_small.url
+                var pic2 = resp.data[1].images.fixed_height_small.url 
+                var pic3 = resp.data[2].images.fixed_height_small.url 
+                var pic4 = resp.data[3].images.fixed_height_small.url 
+                var pic5 = resp.data[4].images.fixed_height_small.url 
+                
+                $('.btnDiv').append('<image class="image1 responsive" ></image>')
+                $('.image1').attr('src', pic1)
+                $('.btnDiv').append('<image class="image2" ></image>')
+                $('.image2').attr('src', pic2)
+                $('.btnDiv').append('<image class="image3" ></image>')
+                $('.image3').attr('src', pic3)
+                $('.btnDiv').append('<image class="image4" ></image>')
+                $('.image4').attr('src', pic4)
+                $('.btnDiv').append('<image class="image5" ></image>')
+                $('.image5').attr('src', pic5)
+            }
 
-
-        }
+        
 
     });
    
