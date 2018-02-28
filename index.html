@@ -38,7 +38,6 @@ var topics = []
 
 $('.pure-btn').click(function(e) { 
     e.preventDefault()
-    $('input').attr("value","")
     $(".btnDiv").empty()
     $(".btns").empty()
     var term = $('#search').val()
@@ -48,6 +47,7 @@ $('.pure-btn').click(function(e) {
         $('.btns').append('<button class="topic btn-primary">'+topics[i]+'</image>')
         
     }
+    $('input').val('')
 
     $(".topic").click(function(e){
         e.preventDefault()
