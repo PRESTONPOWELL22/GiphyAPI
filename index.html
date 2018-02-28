@@ -59,7 +59,7 @@ $('.pure-btn').click(function(e) {
 
     $.ajax({
 
-        url: "http://api.giphy.com/v1/gifs/search?q=" + term +  "&api_key=dc6zaTOxFJmzC&limit=5",
+        url: "https://api.giphy.com/v1/gifs/search?q=" + term +  "&api_key=dc6zaTOxFJmzC&limit=5",
         // url: "http://api.giphy.com/v1/gifs/search?q=" + $('#search').val() +  "api_key=GyRePZcZLe1JzhAbTxGilTmHQ9M08VLt",
         type: "GET",
         success: function(resp) {
