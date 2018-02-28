@@ -14,6 +14,12 @@
     <input id='search' type="text">
     <button class='btn btn-primary pure-btn' id='submit'>submit</button>
     </form>
+        
+    <br>
+
+    <div class="btns"></div>
+
+    <br>
 
     <div class="btnDiv"></div>
 
@@ -27,18 +33,33 @@
     <!-- my app -->
 <script>
 
-// var topics = []
+var topics = []
 // var input = $("#search").val()
 
 $('.pure-btn').click(function(e) { 
     e.preventDefault()
-    console.log("click noticed")
+    $('input').attr("value","")
     $(".btnDiv").empty()
+    $(".btns").empty()
+    var term = $('#search').val()
+    topics.push(term)
+    // console.log(topics)
+    for(var i = 0 ; i < topics.length ; i++){
+        $('.btns').append('<button class="topic btn-primary">'+topics[i]+'</image>')
+        
+    }
+
+    $(".topic").click(function(e){
+        e.preventDefault()
+        console.log($(this).text())
+        $(".btnDiv").empty()
+        var term = $(this).text()
+    
 
 
     $.ajax({
 
-        url: "http://api.giphy.com/v1/gifs/search?q=" + $('#search').val() +  "&api_key=dc6zaTOxFJmzC&limit=5",
+        url: "http://api.giphy.com/v1/gifs/search?q=" + term +  "&api_key=dc6zaTOxFJmzC&limit=5",
         // url: "http://api.giphy.com/v1/gifs/search?q=" + $('#search').val() +  "api_key=GyRePZcZLe1JzhAbTxGilTmHQ9M08VLt",
         type: "GET",
         success: function(resp) {
@@ -51,7 +72,7 @@ $('.pure-btn').click(function(e) {
                 var pic4 = resp.data[3].images.fixed_height_small.url 
                 var pic5 = resp.data[4].images.fixed_height_small.url 
                 
-                $('.btnDiv').append('<image class="image1 responsive" ></image>')
+                $('.btnDiv').append('<image class="image1" ></image>')
                 $('.image1').attr('src', pic1)
                 $('.btnDiv').append('<image class="image2" ></image>')
                 $('.image2').attr('src', pic2)
@@ -66,8 +87,12 @@ $('.pure-btn').click(function(e) {
         
 
     });
+
+    })
    
 })
+
+
 
 
     </script>
